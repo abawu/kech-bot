@@ -9,15 +9,15 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground">
-                <span className="font-serif text-lg italic font-bold">L</span>
+              <div className="w-10 h-10 overflow-hidden rounded-lg">
+                <img src="/logo.png" alt="Endebeto Logo" className="w-full h-full object-contain" />
               </div>
               <span className="font-serif text-xl font-bold text-primary tracking-tight">
-                Locals
+                Endebeto
               </span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              Discover unique homes and experiences curated by locals who love their communities. Sustainable travel starts here.
+              Experience authentic Ethiopia through the eyes of locals. Discover unique homes and cultural heritage.
             </p>
           </div>
 

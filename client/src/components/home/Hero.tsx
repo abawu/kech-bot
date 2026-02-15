@@ -8,17 +8,17 @@ export function Hero() {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{ 
-          backgroundImage: "url('/images/hero-cabin.png')",
+          backgroundImage: "url('/images/ethiopian-coffee.png')",
         }}
       >
-        <div className="absolute inset-0 bg-black/20" /> 
+        <div className="absolute inset-0 bg-black/40" /> 
       </div>
 
       {/* Content */}
       <div className="relative z-10 text-center w-full max-w-4xl px-4 animate-in fade-in zoom-in duration-700">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 drop-shadow-lg">
-          Connect with nature, <br/>
-          <span className="italic text-secondary">stay like a local.</span>
+          Experience Authentic Ethiopia <br/>
+          <span className="italic text-secondary">at local homes.</span>
         </h1>
         <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md font-medium">
           Discover unique eco-friendly homes and experiences curated by the people who know them best.
