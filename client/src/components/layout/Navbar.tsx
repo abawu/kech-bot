@@ -8,11 +8,11 @@ export function Navbar() {
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <a className="flex items-center gap-3 group">
+          <a className="flex flex-col items-center gap-1 group">
             <div className="w-12 h-12 overflow-hidden rounded-lg">
               <img src="/logo.png" alt="Endebeto Logo" className="w-full h-full object-contain" />
             </div>
-            <span className="font-serif text-2xl font-bold text-primary tracking-tight group-hover:text-primary/90 transition-colors">
+            <span className="font-serif text-lg font-bold text-primary tracking-tight group-hover:text-primary/90 transition-colors">
               Endebeto
             </span>
           </a>
