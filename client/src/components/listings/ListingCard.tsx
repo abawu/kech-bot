@@ -10,6 +10,7 @@ interface ListingCardProps {
     rating: number;
     reviews: number;
     image: string;
+    description: string;
     tags: string[];
   };
 }
@@ -44,16 +45,19 @@ export function ListingCard({ listing }: ListingCardProps) {
             {listing.title}
           </h3>
           <p className="text-muted-foreground text-sm font-medium mt-1">{listing.location}</p>
+          <p className="text-foreground/60 text-xs mt-2 line-clamp-2 leading-relaxed">
+            {listing.description}
+          </p>
         </div>
         <div className="flex items-center gap-1 shrink-0">
           <Star className="w-4 h-4 fill-primary text-primary" />
-          <span className="font-medium text-foreground">{listing.rating}</span>
+          <span className="font-medium text-foreground text-sm">{listing.rating}</span>
         </div>
       </div>
 
-      <div className="mt-2 flex items-baseline gap-1">
+      <div className="mt-3 flex items-baseline gap-1">
         <span className="font-bold text-lg text-primary">${listing.price}</span>
-        <span className="text-muted-foreground">night</span>
+        <span className="text-muted-foreground text-sm">per person</span>
       </div>
     </div>
   );

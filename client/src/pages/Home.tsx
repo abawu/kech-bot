@@ -4,16 +4,17 @@ import { Hero } from "@/components/home/Hero";
 import { ListingCard } from "@/components/listings/ListingCard";
 import { Footer } from "@/components/layout/Footer";
 import { categories, listings } from "@/lib/mockData";
-import { Trees, Tent, Warehouse, Building2, Home } from "lucide-react";
+import { Coffee, UtensilsCrossed, Music, Palette, Shirt, Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Map icon strings to components
 const iconMap = {
-  Home: Home,
-  Tent: Tent,
-  Trees: Trees,
-  Warehouse: Warehouse,
-  Building2: Building2,
+  Compass: Compass,
+  Coffee: Coffee,
+  UtensilsCrossed: UtensilsCrossed,
+  Music: Music,
+  Palette: Palette,
+  Shirt: Shirt,
 };
 
 export default function HomePage() {
@@ -30,36 +31,31 @@ export default function HomePage() {
         <Hero />
         
         <main className="container mx-auto px-4 py-8">
-          {/* Categories */}
-          <div className="flex items-center gap-8 overflow-x-auto pb-6 mb-8 scrollbar-hide">
-            {categories.map((cat) => {
-              const Icon = iconMap[cat.icon as keyof typeof iconMap];
-              const isActive = activeCategory === cat.id;
-              
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  className={cn(
-                    "flex flex-col items-center gap-2 min-w-[64px] transition-all group",
-                    isActive 
-                      ? "text-primary opacity-100" 
-                      : "text-muted-foreground opacity-60 hover:opacity-100 hover:text-foreground"
-                  )}
-                >
-                  <Icon className={cn("w-6 h-6", isActive && "stroke-[2.5px]")} />
-                  <span className={cn(
-                    "text-xs font-medium whitespace-nowrap relative",
-                    isActive && "font-bold"
-                  )}>
-                    {cat.name}
-                    {isActive && (
-                      <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-primary rounded-full" />
+          {/* Categories Header */}
+          <div className="mb-8">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-6">Browse Authentic Experiences</h2>
+            <div className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide">
+              {categories.map((cat) => {
+                const Icon = iconMap[cat.icon as keyof typeof iconMap];
+                const isActive = activeCategory === cat.id;
+                
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap",
+                      isActive 
+                        ? "bg-primary text-primary-foreground shadow-md" 
+                        : "bg-muted text-foreground hover:bg-muted/80"
                     )}
-                  </span>
-                </button>
-              );
-            })}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span>{cat.name}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {/* Listings Grid */}
