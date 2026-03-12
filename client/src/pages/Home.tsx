@@ -41,25 +41,40 @@ export default function HomePage() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <div className="flex flex-col items-center text-center p-8 bg-card/50 backdrop-blur-sm rounded-3xl shadow-sm border border-border/60 hover:shadow-xl hover:border-primary/30 transition-all group">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform group-hover:bg-primary group-hover:text-primary-foreground duration-500">
-                  <ShieldCheck className="w-8 h-8" />
+              {/* Authenticity */}
+              <div className="flex flex-col items-center text-center p-6 bg-card/50 backdrop-blur-sm rounded-3xl shadow-sm border border-border/60 hover:shadow-xl hover:border-primary/30 transition-all group">
+                <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-primary/10 group-hover:border-primary/30 transition-colors">
+                  <img 
+                    src="/images/authentic-laughing.png" 
+                    alt="Authentic Experience" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
                 </div>
                 <h3 className="font-serif font-bold text-xl mb-3">Verified Authenticity</h3>
                 <p className="text-base text-muted-foreground leading-relaxed">Every experience is vetted to ensure it respectfully and accurately represents rich Ethiopian traditions.</p>
               </div>
               
-              <div className="flex flex-col items-center text-center p-8 bg-card/50 backdrop-blur-sm rounded-3xl shadow-sm border border-border/60 hover:shadow-xl hover:border-secondary/50 transition-all group translate-y-0 md:translate-y-4">
-                <div className="w-16 h-16 bg-secondary/20 rounded-2xl flex items-center justify-center text-secondary-foreground mb-6 group-hover:scale-110 transition-transform group-hover:bg-secondary group-hover:text-secondary-foreground duration-500">
-                  <Users className="w-8 h-8" />
+              {/* Local Families */}
+              <div className="flex flex-col items-center text-center p-6 bg-card/50 backdrop-blur-sm rounded-3xl shadow-sm border border-border/60 hover:shadow-xl hover:border-secondary/50 transition-all group translate-y-0 md:translate-y-4">
+                <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-secondary/20 group-hover:border-secondary/40 transition-colors">
+                  <img 
+                    src="/images/local-family.png" 
+                    alt="Local Family" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
                 </div>
                 <h3 className="font-serif font-bold text-xl mb-3">Support Local Families</h3>
                 <p className="text-base text-muted-foreground leading-relaxed">Your bookings directly empower local artisans, talented cooks, and host families across Ethiopia.</p>
               </div>
               
-              <div className="flex flex-col items-center text-center p-8 bg-card/50 backdrop-blur-sm rounded-3xl shadow-sm border border-border/60 hover:shadow-xl hover:border-primary/30 transition-all group">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform group-hover:bg-primary group-hover:text-primary-foreground duration-500">
-                  <HeartHandshake className="w-8 h-8" />
+              {/* Deep Connections */}
+              <div className="flex flex-col items-center text-center p-6 bg-card/50 backdrop-blur-sm rounded-3xl shadow-sm border border-border/60 hover:shadow-xl hover:border-primary/30 transition-all group">
+                <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-primary/10 group-hover:border-primary/30 transition-colors">
+                  <img 
+                    src="/images/deep-connection.png" 
+                    alt="Deep Connections" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
                 </div>
                 <h3 className="font-serif font-bold text-xl mb-3">Deep Connections</h3>
                 <p className="text-base text-muted-foreground leading-relaxed">Go far beyond standard tourism. Create meaningful bonds with hosts and experience life as a true local.</p>
