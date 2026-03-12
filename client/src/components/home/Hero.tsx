@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { Search, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
@@ -18,9 +18,22 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center w-full max-w-4xl px-4 animate-in fade-in zoom-in duration-1000 delay-150">
-        <span className="inline-block py-1 px-3 rounded-full bg-secondary/20 backdrop-blur-md text-secondary border border-secondary/30 text-sm font-bold tracking-wider mb-6 animate-in slide-in-from-bottom-4">
-          WELCOME TO ETHIOPIA
-        </span>
+        
+        {/* Creative Cultural Badge */}
+        <div className="inline-flex items-center gap-3 mb-8 animate-in slide-in-from-bottom-4">
+          <div className="h-[2px] w-8 md:w-16 bg-gradient-to-r from-transparent via-[#009b48] to-[#fac000] rounded-full" />
+          <span className="py-2 px-6 md:px-8 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 text-white text-xs md:text-sm font-extrabold tracking-[0.25em] uppercase shadow-2xl relative overflow-hidden group">
+            {/* Subtle Ethiopian flag gradient effect on hover/background */}
+            <span className="absolute inset-0 bg-gradient-to-r from-[#009b48]/20 via-[#fac000]/20 to-[#ee2737]/20 opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
+            <span className="relative z-10 flex items-center gap-2 drop-shadow-md">
+              <Star className="w-3.5 h-3.5 text-[#fac000] fill-[#fac000]" />
+              Welcome to Ethiopia, Land of Origins
+              <Star className="w-3.5 h-3.5 text-[#fac000] fill-[#fac000]" />
+            </span>
+          </span>
+          <div className="h-[2px] w-8 md:w-16 bg-gradient-to-l from-transparent via-[#ee2737] to-[#fac000] rounded-full" />
+        </div>
+
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 drop-shadow-xl leading-tight">
           Experience Authentic <br/>
           <span className="italic text-secondary font-light">local heritage.</span>
@@ -49,6 +62,26 @@ export function Hero() {
               placeholder="City in Ethiopia" 
               className="w-full bg-transparent border-none outline-none text-foreground font-medium placeholder:text-muted-foreground"
             />
+          </div>
+
+          <div className="flex-1 px-6 py-3 w-full md:w-auto text-left hover:bg-gray-50 rounded-full transition-colors cursor-pointer group relative">
+            <label className="block text-xs font-bold text-foreground/70 uppercase tracking-wider group-hover:text-primary transition-colors">Date</label>
+            <input 
+              type="date" 
+              className="w-full bg-transparent border-none outline-none text-foreground font-medium placeholder:text-muted-foreground cursor-pointer"
+            />
+          </div>
+
+          <div className="w-px h-10 bg-gray-200 hidden md:block" />
+
+          <div className="flex-1 px-6 py-3 w-full md:w-auto text-left hover:bg-gray-50 rounded-full transition-colors cursor-pointer group">
+            <label className="block text-xs font-bold text-foreground/70 uppercase tracking-wider group-hover:text-primary transition-colors">Guests</label>
+            <select className="w-full bg-transparent border-none outline-none text-foreground font-medium cursor-pointer appearance-none">
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4+ Guests</option>
+            </select>
           </div>
 
           <Button size="lg" className="rounded-full w-full md:w-auto h-14 px-8 bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg flex items-center gap-2">
