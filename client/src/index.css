@@ -106,9 +106,31 @@
     @apply border-border;
   }
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-background text-foreground relative;
   }
+  
+  /* Subtle Ethiopian motif background pattern */
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: 
+      radial-gradient(hsl(var(--primary)) 0.5px, transparent 0.5px),
+      radial-gradient(hsl(var(--primary)) 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif font-medium;
   }
+}
+
+@keyframes ken-burns {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.05) translate(-1%, 1%); }
+  100% { transform: scale(1.1) translate(1%, -1%); }
 }

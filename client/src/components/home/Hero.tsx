@@ -3,22 +3,27 @@ import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <div className="relative h-[600px] w-full flex items-center justify-center overflow-hidden rounded-3xl my-6 mx-4 md:mx-auto container">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{ 
-          backgroundImage: "url('/images/ethiopian-coffee.png')",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/40" /> 
+    <div className="relative h-[700px] w-full flex items-center justify-center overflow-hidden rounded-3xl my-6 mx-4 md:mx-auto container shadow-2xl group">
+      {/* Background Image with Ken Burns Video-like Animation */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-80 animate-[ken-burns_30s_ease-in-out_infinite_alternate] transition-transform duration-1000 scale-105 group-hover:scale-110"
+          style={{ 
+            backgroundImage: "url('/images/ethiopian-coffee.png')",
+          }}
+        />
+        {/* Rich gradient overlay for better text legibility and premium feel */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" /> 
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center w-full max-w-4xl px-4 animate-in fade-in zoom-in duration-700">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 drop-shadow-lg">
-          Experience Authentic Ethiopia <br/>
-          <span className="italic text-secondary">at local homes.</span>
+      <div className="relative z-10 text-center w-full max-w-4xl px-4 animate-in fade-in zoom-in duration-1000 delay-150">
+        <span className="inline-block py-1 px-3 rounded-full bg-secondary/20 backdrop-blur-md text-secondary border border-secondary/30 text-sm font-bold tracking-wider mb-6 animate-in slide-in-from-bottom-4">
+          WELCOME TO ETHIOPIA
+        </span>
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 drop-shadow-xl leading-tight">
+          Experience Authentic <br/>
+          <span className="italic text-secondary font-light">local heritage.</span>
         </h1>
         <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md font-medium">
           Immerse yourself in Ethiopian culture through coffee ceremonies, traditional cuisine, and local artisan crafts.

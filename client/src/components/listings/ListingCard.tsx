@@ -17,47 +17,63 @@ interface ListingCardProps {
 
 export function ListingCard({ listing }: ListingCardProps) {
   return (
-    <div className="group cursor-pointer">
-      <div className="relative aspect-[4/3] overflow-hidden rounded-xl mb-3">
+    <div className="group cursor-pointer flex flex-col h-full">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-xl mb-4 shadow-sm group-hover:shadow-xl transition-all duration-500">
         <img 
           src={listing.image} 
           alt={listing.title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
         />
-        <div className="absolute top-3 right-3">
-          <button className="p-2 rounded-full bg-black/10 backdrop-blur-sm text-white/70 hover:bg-white hover:text-red-500 transition-all">
+        
+        {/* Gradient Overlay for Hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        
+        <div className="absolute top-3 right-3 z-10">
+          <button className="p-2 rounded-full bg-black/20 backdrop-blur-md text-white/90 hover:bg-white hover:text-red-500 transition-all shadow-sm">
             <Heart className="w-5 h-5 fill-current opacity-0 hover:opacity-100 absolute inset-2" />
             <Heart className="w-5 h-5" />
           </button>
         </div>
         {listing.tags[0] && (
-          <div className="absolute top-3 left-3">
-            <Badge variant="secondary" className="bg-secondary text-secondary-foreground font-medium shadow-sm hover:bg-secondary/90">
+          <div className="absolute top-3 left-3 z-10">
+            <Badge variant="secondary" className="bg-white/95 backdrop-blur-sm text-foreground font-semibold shadow-sm hover:bg-white border-none px-3 py-1">
               {listing.tags[0]}
             </Badge>
           </div>
         )}
+
+        {/* Hover Action Button */}
+        <div className="absolute bottom-5 left-0 right-0 flex justify-center translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out z-10">
+          <button className="bg-primary text-primary-foreground px-6 py-2.5 rounded-full font-bold text-sm shadow-xl hover:bg-primary/90 hover:scale-105 transition-transform flex items-center gap-2">
+            View Experience
+          </button>
+        </div>
       </div>
 
-      <div className="flex justify-between items-start gap-2">
-        <div>
-          <h3 className="font-serif font-bold text-lg text-foreground leading-tight group-hover:text-primary transition-colors">
+      <div className="flex justify-between items-start gap-3 flex-1">
+        <div className="flex-1">
+          <h3 className="font-serif font-bold text-xl text-foreground leading-tight group-hover:text-primary transition-colors">
             {listing.title}
           </h3>
-          <p className="text-muted-foreground text-sm font-medium mt-1">{listing.location}</p>
-          <p className="text-foreground/60 text-xs mt-2 line-clamp-2 leading-relaxed">
+          <p className="text-muted-foreground text-sm font-medium mt-1.5 flex items-center gap-1">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            {listing.location}
+          </p>
+          <p className="text-foreground/70 text-sm mt-2.5 line-clamp-2 leading-relaxed">
             {listing.description}
           </p>
         </div>
-        <div className="flex items-center gap-1 shrink-0">
-          <Star className="w-4 h-4 fill-primary text-primary" />
-          <span className="font-medium text-foreground text-sm">{listing.rating}</span>
+        <div className="flex items-center gap-1 shrink-0 bg-muted/50 px-2 py-1.5 rounded-lg border border-border/50">
+          <Star className="w-4 h-4 fill-secondary text-secondary" />
+          <span className="font-bold text-foreground text-sm">{listing.rating}</span>
         </div>
       </div>
 
-      <div className="mt-3 flex items-baseline gap-1">
-        <span className="font-bold text-lg text-primary">${listing.price}</span>
-        <span className="text-muted-foreground text-sm">per person</span>
+      <div className="mt-4 pt-4 border-t border-border/60 flex items-baseline justify-between">
+        <div className="flex items-baseline gap-1">
+          <span className="font-serif font-bold text-2xl text-primary">${listing.price}</span>
+          <span className="text-muted-foreground text-sm font-medium">/ person</span>
+        </div>
       </div>
     </div>
   );
