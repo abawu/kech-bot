@@ -36,7 +36,7 @@ export function Hero() {
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 drop-shadow-xl leading-tight">
           Experience Authentic <br/>
-          <span className="italic text-secondary font-light">local heritage.</span>
+          <span className="italic text-secondary font-light">Ethiopia.</span>
         </h1>
         <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md font-medium">
           Immerse yourself in Ethiopian culture through coffee ceremonies, traditional cuisine, and local artisan crafts.
