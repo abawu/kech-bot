@@ -6,6 +6,9 @@ interface ListingCardProps {
     id: number;
     title: string;
     location: string;
+    meetingPoint?: string;
+    lat?: number;
+    lng?: number;
     price: number;
     rating: number;
     reviews: number;
@@ -16,6 +19,10 @@ interface ListingCardProps {
 }
 
 export function ListingCard({ listing }: ListingCardProps) {
+  const directionsUrl = (listing.lat != null && listing.lng != null)
+    ? `https://www.google.com/maps/search/?api=1&query=${listing.lat},${listing.lng}`
+    : null;
+
   return (
     <div className="group cursor-pointer flex flex-col h-full">
       <div className="relative aspect-[4/3] overflow-hidden rounded-xl mb-4 shadow-sm group-hover:shadow-xl transition-all duration-500">
@@ -58,7 +65,22 @@ export function ListingCard({ listing }: ListingCardProps) {
           <p className="text-muted-foreground text-sm font-medium mt-1.5 flex items-center gap-1">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             {listing.location}
+            {directionsUrl && (
+              <a
+                href={directionsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="ml-2 text-xs font-semibold text-primary hover:underline"
+              >
+                Directions
+              </a>
+            )}
           </p>
+          {listing.meetingPoint && (
+            <p className="text-foreground/60 text-xs mt-1">
+              Meet: {listing.meetingPoint}
+            </p>
+          )}
           <p className="text-foreground/70 text-sm mt-2.5 line-clamp-2 leading-relaxed">
             {listing.description}
           </p>

@@ -27,9 +27,11 @@ export function Navbar() {
 
         {/* User Actions */}
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" className="hidden md:flex font-medium hover:bg-muted">
-            Become the host
-          </Button>
+          <Link href="/become-host">
+            <Button variant="ghost" size="sm" className="hidden md:flex font-medium hover:bg-muted">
+              Become the host
+            </Button>
+          </Link>
           <Button variant="ghost" size="icon" className="hover:bg-muted rounded-full">
             <Globe className="w-5 h-5" />
           </Button>
