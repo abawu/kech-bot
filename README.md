@@ -1,45 +1,32 @@
-# Home Connect
+# Kech Bot
 
-Home Connect is a frontend-first experience marketplace that connects tourists with authentic local culture in Ethiopian homes. Hosts can publish cultural experiences, and guests can discover, explore, and book them.
+Kech Bot is a Telegram food ordering bot for Hawassa cafes with bilingual customer flows, admin order management, distance-based delivery pricing, and cafe-specific takeaway fees.
 
 ## Features
-- Curated cultural experiences with categories and rich cards
-- “Become a Host” flow with required and optional details
-- Location capture with meeting point and map preview
-- Responsive layout with modern UI components
+- English and Amharic customer flow
+- Cafe and menu browsing with categories and paging
+- Cart, checkout, payment, and receipt upload flow
+- Hawassa delivery-area validation
+- Cafe-to-customer distance pricing
+- Admin order notifications and status updates
 
 ## Tech Stack
-- React + Vite
+- Node.js
 - TypeScript
-- Tailwind CSS
-- Radix UI
+- Express
+- Telegram Bot API
 
-## Getting Started
-
-Install dependencies:
-```bash
-npm install
-```
-
-Run the client:
-```bash
-npm run dev:client
-```
-
-The app will be available at `http://localhost:5000`.
+## Environment Variables
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_ADMIN_CHAT_ID`
+- `TELEGRAM_WEBHOOK_SECRET`
 
 ## Scripts
-- `npm run dev:client` Start the Vite client on port 5000
-- `npm run dev` Start the server (if used)
-- `npm run build` Build the project
-- `npm run start` Run the production build
-- `npm run check` Typecheck
-
-## Project Structure
-- `client/` Frontend application
-- `server/` Server (optional, currently not required for frontend-only features)
-- `shared/` Shared types and schema
+- `npm run dev`
+- `npm run build`
+- `npm run start`
+- `npm run check`
 
 ## Notes
-- Listings are currently mocked in `client/src/lib/mockData.ts`.
-- Host submissions are frontend-only.
+- Menu and cafe data are currently stored in memory in `server/storage.ts`.
+- Local secrets should stay in `.env.local` and should not be committed.
