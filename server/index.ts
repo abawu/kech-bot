@@ -2,7 +2,7 @@ import express, { type Request, Response, NextFunction } from "express";
 import { loadLocalEnv } from "./env";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
-import { startTelegramPolling } from "./telegram";
+import { startTelegramBot } from "./telegram";
 import { createServer } from "http";
 
 loadLocalEnv();
@@ -104,7 +104,10 @@ app.use((req, res, next) => {
     () => {
       log(`serving on ${host}:${port}`);
       if (process.env.TELEGRAM_BOT_TOKEN) {
-        startTelegramPolling(log);
+        void startTelegramBot(log).catch((error) => {
+          console.error("Telegram bot startup failed:", error);
+          log("Telegram bot startup failed", "telegram");
+        });
       }
     },
   );

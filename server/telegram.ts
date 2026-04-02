@@ -256,8 +256,21 @@ function getSecretToken() {
   return process.env.TELEGRAM_WEBHOOK_SECRET;
 }
 
+function getWebhookBaseUrl() {
+  return (
+    process.env.TELEGRAM_WEBHOOK_BASE_URL ||
+    process.env.RENDER_EXTERNAL_URL ||
+    process.env.PUBLIC_URL ||
+    process.env.APP_URL
+  );
+}
+
 function isConfigured() {
   return Boolean(getBotToken());
+}
+
+function shouldUseWebhookMode() {
+  return Boolean(getWebhookBaseUrl());
 }
 
 function getLanguage(session?: BotSession): BotLanguage {
@@ -1521,6 +1534,38 @@ export function startTelegramPolling(log?: (message: string, source?: string) =>
   void run();
 }
 
+async function configureTelegramWebhook(log?: (message: string, source?: string) => void) {
+  const baseUrl = getWebhookBaseUrl();
+  if (!baseUrl || !isConfigured()) {
+    return;
+  }
+
+  const webhookUrl = `${baseUrl.replace(/\/$/, "")}/api/telegram/webhook`;
+  const secretToken = getSecretToken();
+
+  await telegramRequest("setWebhook", {
+    url: webhookUrl,
+    secret_token: secretToken,
+    allowed_updates: ["message", "callback_query"],
+    drop_pending_updates: false,
+  });
+
+  log?.(`Telegram webhook configured at ${webhookUrl}`, "telegram");
+}
+
+export async function startTelegramBot(log?: (message: string, source?: string) => void) {
+  if (!isConfigured()) {
+    return;
+  }
+
+  if (shouldUseWebhookMode()) {
+    await configureTelegramWebhook(log);
+    return;
+  }
+
+  startTelegramPolling(log);
+}
+
 export function registerTelegramRoutes(app: Express) {
   app.get("/api/telegram/health", async (_req: Request, res: Response) => {
     res.json({
@@ -1528,6 +1573,8 @@ export function registerTelegramRoutes(app: Express) {
       configured: isConfigured(),
       hasAdminChat: Boolean(getAdminChatId()),
       webhookSecretConfigured: Boolean(getSecretToken()),
+      webhookMode: shouldUseWebhookMode(),
+      webhookBaseUrl: getWebhookBaseUrl() ?? null,
       pollingStarted,
     });
   });
