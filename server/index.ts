@@ -1,7 +1,11 @@
 import express, { type Request, Response, NextFunction } from "express";
+import { loadLocalEnv } from "./env";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
+import { startTelegramPolling } from "./telegram";
 import { createServer } from "http";
+
+loadLocalEnv();
 
 const app = express();
 const httpServer = createServer(app);
@@ -99,6 +103,9 @@ app.use((req, res, next) => {
     },
     () => {
       log(`serving on ${host}:${port}`);
+      if (process.env.TELEGRAM_BOT_TOKEN) {
+        startTelegramPolling(log);
+      }
     },
   );
 })();
